@@ -30,7 +30,3 @@ function ec2 {
       ;;
   esac
 }
-
-function jb {
-    ssh-aws julien-jumpbox
-}
