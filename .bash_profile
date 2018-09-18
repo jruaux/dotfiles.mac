@@ -1,25 +1,24 @@
 export PATH="$PATH":/usr/local/Cellar/easy-tag/2.4.3_1/bin/
 SHELL_SESSION_HISTORY=0
 HISTFILESIZE=900000
-#export CLICOLOR=1
-#export LSCOLORS=GxFxCxDxBxegedabagaced
 export PS1='\u@\h:\w\$ '
 alias ll='ls -lG'
-
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-genpasswd() { pwgen -Bs $1 1 |pbcopy |pbpaste; echo “Has been copied to clipboard”
+function genpasswd {
+    pwgen -Bs $1 1 | pbcopy | pbpaste; echo “Has been copied to clipboard”
 }
 
-function ec2-hostname-from-instance() {
+##### AWS #####
+function ec2-hostname-from-instance {
     echo $(aws ec2 describe-instances --filters "{\"Name\":\"tag:Name\", \"Values\":[\"$1\"]}" --query='Reservations[0].Instances[0].PublicDnsName' | tr -d '"')
 }
 
-function ec2-ip-from-instance() {
+function ec2-ip-from-instance {
     echo $(aws ec2 describe-instances --filters "{\"Name\":\"tag:Name\", \"Values\":[\"$1\"]}" --query='Reservations[0].Instances[0].PublicIpAddress' | tr -d '"')
 }
 
-function ec2-ssh() {
+function ec2-ssh {
     ssh -i ~/.ssh/julien.pem ubuntu@$(ec2-ip-from-instance "$1")
 }
 
@@ -35,12 +34,25 @@ function ec2 {
   esac
 }
 
-function gssh {
-    gcloud compute ssh $1 --zone us-west1-b
-}
+##### GCP #####
+export demoinstances='jrx-demo-1 jrx-demo-2 jrx-demo-3 jrx-loader'
+export gcpzone='us-west1-b'
+
 
 function dssh {
-    gssh jrx-demo-$1
+    gssh $(demo-instance-by-index)
+}
+
+function dstop {
+    demo stop
+}
+
+function dstart {
+    demo start
+}
+
+function gssh {
+    gcloud compute ssh $1 --zone $gcpzone
 }
 
 function gstop {
@@ -52,17 +64,20 @@ function gstart {
 }
 
 function ginstances {
-    gcloud compute instances $1 --async $2 --zone us-west1-b
+    gcloud compute instances $1 --async $2 --zone $gcpzone
 }
 
-function dstop {
-    gstop jrx-demo-1
-    gstop jrx-demo-2
-    gstop jrx-demo-3
+function demo {
+    instances=($demoinstances)
+    for instance in "${instances[@]}"
+    do
+        ginstances $1 $instance
+    done
 }
 
-function dstart {
-    gstart jrx-demo-1
-    gstart jrx-demo-2
-    gstart jrx-demo-3
+function demo-instance-by-index {
+    instances=($demoinstances)
+    echo ${instances[$1]}
 }
+
+
