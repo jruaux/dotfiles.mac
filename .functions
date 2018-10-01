@@ -33,7 +33,6 @@ function ec2 {
 export demoinstances='jrx-demo-1 jrx-demo-2 jrx-demo-3 jrx-loader'
 export gcpzone='us-west1-b'
 
-
 function dssh {
     instance=$(demo-instance-by-index $1)
     echo "SSHing to $instance"
