@@ -1,9 +1,22 @@
-= Setting up GCP
+= GCP
 
-== Edit .functions
-
+== Setup
 Edit the `.functions` file and change the `demoinstances` and `gcpzone` variables to reflect your environment:
 -----
 export demoinstances='jrx-demo-1 jrx-demo-2 jrx-demo-3 jrx-loader'
 export gcpzone='us-west1-b'
+-----
+
+== Functions
+=== dstart
+Run `dstart` to start all instances included in `demoinstances` variable
+
+=== dstop
+Run `dstop` to stop all instances included in `demoinstances` variable
+
+=== dssh
+Run `dssh <instance_index>` to ssh into an instance, e.g.:
+-----
+$ dssh 1
+SSHing to jrx-demo-1
 -----
