@@ -1,5 +1,7 @@
 = Setting up GCP
-== .functions
+
+== Edit .functions
+
 Edit the `.functions` file and change the `demoinstances` and `gcpzone` variables to reflect your environment:
 -----
 export demoinstances='jrx-demo-1 jrx-demo-2 jrx-demo-3 jrx-loader'
