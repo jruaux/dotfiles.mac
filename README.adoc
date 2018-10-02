@@ -1,4 +1,7 @@
-= GCP
+= GCP Helpers
+
+== Requirements
+These GCP helper functions require the https://cloud.google.com/sdk/gcloud/[gcloud CLI].
 
 == Setup
 Edit the `.functions` file and change the `demoinstances` and `gcpzone` variables to reflect your environment:
