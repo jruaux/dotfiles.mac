@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function genpasswd {
-    pwgen -Bs $1 1 | pbcopy | pbpaste; echo “Has been copied to clipboard”
+    pwgen -Bs $1 1 | tr -d '\n' | pbcopy | pbpaste; echo “Has been copied to clipboard”
 }
 
 ##### AWS #####
