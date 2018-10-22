@@ -30,7 +30,7 @@ function ec2 {
 }
 
 ##### GCP #####
-export demoinstances='jrx-demo-1 jrx-demo-2 jrx-demo-3 jrx-loader'
+export demoinstances='julien-node-jrx-1 julien-node-jrx-2 julien-node-jrx-3'
 export gcpzone='us-west1-b'
 
 function dssh {
@@ -75,4 +75,9 @@ function demo-instance-by-index {
     instances=($demoinstances)
     index=$(($1 - 1))
     echo ${instances[$index]}
+}
+
+##### Terraform #####
+function tfield {
+    terraform output $1 | pbcopy
 }
