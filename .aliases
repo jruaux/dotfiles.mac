@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Shortcuts
-alias d="cd ~/ReDocuments"
+alias d="cd ~/DocumentsRL"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/ReDocuments/Customers"
+alias p="cd ~/DocumentsRL/Customers"
 alias g="git"
 
 # Detect which `ls` flavor is in use
@@ -28,4 +28,4 @@ alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 # Always use color output for `ls`
 #alias ls="command ls ${colorflag}"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias cdrl='cd ~/DocumentsRL'
+alias k='kubectl'
