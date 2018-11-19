@@ -81,6 +81,14 @@ function demo-instance-by-index {
     echo ${instances[$index]}
 }
 
+##### Redis #####
+function mtier() {
+  read host port <<< $( echo $1 | awk -F":" '{print $1" "$2}' )
+  cmd="memtier_benchmark --ratio=1:4 --test-time=24000 -d 100 -t 10 -c 5 --pipeline=50 --key-pattern=S:S -x 10 --hide-histogram -s $host -p $port"
+  echo $cmd
+  $cmd
+}
+
 ##### Terraform #####
 function tfield {
     terraform output $1 | pbcopy
@@ -88,5 +96,10 @@ function tfield {
 
 ##### Backup #####
 function backup-pics {
-    rsync --remove-source-files -azv /Users/jruaux/Pictures/Photos\ Library.photoslibrary/Masters/ nas:/tank/pictures/jrx/
+    rsync --remove-source-files -azv ~/Pictures/Photos\ Library.photoslibrary/Masters/ nas:/tank/pictures/jrx/
+}
+
+function backup-music {
+    rsync --remove-source-files -azv ~/Music/Soulseek/complete/ nas:/tank/music/new/
+    find ~/Music/Soulseek/complete/ -type d -empty -delete
 }
