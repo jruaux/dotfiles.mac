@@ -22,6 +22,10 @@ function dstart {
     demo start
 }
 
+function dlist {
+    glist | grep julien
+}
+
 function gssh {
     gcloud compute ssh $1 --zone $gcpzone
 }
@@ -39,7 +43,7 @@ function glist {
 }
 
 function ginstances {
-    gcloud compute instances $1 --async $2 --zone $gcpzone
+    gcloud compute instances $1 --quiet --async $2 --zone $gcpzone
 }
 
 function demo {
@@ -48,7 +52,7 @@ function demo {
     done
 }
 
-##### Redis #####
+##### dev #####
 function mtier() {
   read host port <<< $( echo $1 | awk -F":" '{print $1" "$2}' )
   cmd="memtier_benchmark --ratio=1:4 --test-time=24000 -d 100 -t 10 -c 5 --pipeline=50 --key-pattern=S:S -x 10 --hide-histogram -s $host -p $port"
@@ -56,9 +60,20 @@ function mtier() {
   $cmd
 }
 
-##### Terraform #####
 function tfield {
     terraform output $1 | pbcopy
+}
+
+function start-redisearch {
+    redis-server /usr/local/redis/redis.conf --loadmodule /Users/jruaux/git/RediSearch/build/redisearch.so
+}
+
+function start-redisgraph {
+    redis-server /usr/local/redis/redis.conf --loadmodule /Users/jruaux/git/RedisGraph/src/redisgraph.so
+}
+
+function start-prometheus {
+    prometheus --config.file=/Users/jruaux/dev/prometheus/prometheus.yml
 }
 
 ##### Backup #####
@@ -68,5 +83,9 @@ function backup-pics {
 
 function backup-music {
     rsync --remove-source-files -azv ~/Music/Soulseek/complete/ nas:/tank/music/new/
-    find ~/Music/Soulseek/complete/ -type d -empty -delete
+    find /Users/jruaux/Music/Soulseek/complete/ -type d -empty -delete
+}
+
+function ex2ssh {
+    ssh -oHostKeyAlgorithms=+ssh-dss root@ex2
 }
