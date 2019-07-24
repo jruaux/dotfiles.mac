@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export JAVA_HOME=$(/usr/libexec/java_home -v 11.0)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export PATH=$JAVA_HOME/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -102,3 +102,4 @@ source $ZSH/oh-my-zsh.sh
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 source $HOME/.zshfunctions
+export GPG_TTY=$(tty)
