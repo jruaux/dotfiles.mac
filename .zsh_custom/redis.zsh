@@ -16,3 +16,7 @@ function start-redisgraph {
 function start-prometheus {
     prometheus --config.file=/Users/jruaux/dev/prometheus/prometheus.yml
 }
+
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+. /usr/local/share/zsh/site-functions/_riot
