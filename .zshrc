@@ -1,7 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export PATH=$JAVA_HOME/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/jruaux/.oh-my-zsh"
@@ -99,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-
-source $HOME/.zshfunctions
-export GPG_TTY=$(tty)
+fpath=(/usr/local/share/zsh-completions $fpath)
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+. /usr/local/share/zsh/site-functions/_riot
