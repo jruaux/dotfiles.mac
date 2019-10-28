@@ -36,7 +36,7 @@ function glist {
 }
 
 function ginstances {
-    gcloud compute instances $1 --quiet --async $2 --zone $gcpzone
+    gcloud compute instances $1 --verbosity error --quiet --async $2 --zone $gcpzone
 }
 
 function demo {
