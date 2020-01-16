@@ -1,5 +1,5 @@
 function backup-pics {
-    rsync --remove-source-files -azv ~/Pictures/Photos\ Library.photoslibrary/Masters/ nas:/tank/pictures/jrx/
+    rsync --remove-source-files -azv ~/Pictures/Photos\ Library.photoslibrary/originals/ nas:/tank/pictures/jrx/
 }
 
 function backup-music {

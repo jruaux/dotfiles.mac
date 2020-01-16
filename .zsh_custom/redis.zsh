@@ -9,9 +9,9 @@ function start-redisearch {
     redis-server /usr/local/redis/redis.conf --loadmodule /Users/jruaux/git/RediSearch/build/redisearch.so
 }
 
-function start-redisgraph {
-    redis-server /usr/local/redis/redis.conf --loadmodule /Users/jruaux/git/RedisGraph/src/redisgraph.so
-}
+#function start-redisgraph {
+#    redis-server /usr/local/redis/redis.conf --loadmodule /Users/jruaux/git/RedisGraph/src/redisgraph.so
+#}
 
 function start-prometheus {
     prometheus --config.file=/Users/jruaux/dev/prometheus/prometheus.yml

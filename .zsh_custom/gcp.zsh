@@ -1,4 +1,4 @@
-gcpinstances=('julien-node-jrx-1' 'julien-node-jrx-2' 'julien-node-jrx-3' 'julien-loader')
+gcpinstances=('jrx-node-1' 'jrx-node-2' 'jrx-node-3' 'jrx-client')
 gcpzone='us-west1-b'
 
 function dssh {
@@ -16,7 +16,7 @@ function dstart {
 }
 
 function dlist {
-    glist | grep julien
+    glist | grep jrx
 }
 
 function gssh {
