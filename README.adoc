@@ -1,0 +1,13 @@
+= dotfiles.mac
+
+== Setup
+
+https://www.atlassian.com/git/tutorials/dotfiles[]
+
+[source,shell]
+===
+git clone --bare https://github.com/jruaux/dotfiles.mac.git $HOME/.cfg
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+mv $HOME/.zshrc $HOME/.zshrc.ori
+config checkout
+===
