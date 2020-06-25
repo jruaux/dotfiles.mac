@@ -3,13 +3,13 @@ hs.window.animationDuration = 0
 units = {
   right         = { x = 0.50, y = 0.00, w = 0.50, h = 1.00 },
   left          = { x = 0.00, y = 0.00, w = 0.50, h = 1.00 },
-  top           = { x = 0.00, y = 0.00, w = 1.00, h = 0.70 },
-  bottom        = { x = 0.00, y = 0.70, w = 1.00, h = 0.30 },
-  topleft       = { x = 0.00, y = 0.00, w = 0.50, h = 0.70 },
-  topright      = { x = 0.50, y = 0.00, w = 0.50, h = 0.70 },
-  bottomleft    = { x = 0.00, y = 0.70, w = 0.50, h = 0.30 },
-  bottomright   = { x = 0.50, y = 0.70, w = 0.50, h = 0.30 },
-  bottomright70 = { x = 0.30, y = 0.30, w = 0.70, h = 0.70 },  
+  top           = { x = 0.00, y = 0.00, w = 1.00, h = 0.67 },
+  bottom        = { x = 0.00, y = 0.67, w = 1.00, h = 0.33 },
+  topleft       = { x = 0.00, y = 0.00, w = 0.50, h = 0.67 },
+  topright      = { x = 0.50, y = 0.00, w = 0.50, h = 0.67 },
+  bottomleft    = { x = 0.00, y = 0.67, w = 0.50, h = 0.33 },
+  bottomright   = { x = 0.50, y = 0.67, w = 0.50, h = 0.33 },
+  bottomright70 = { x = 0.33, y = 0.33, w = 0.67, h = 0.67 },  
   maximum       = { x = 0.00, y = 0.00, w = 1.00, h = 1.00 }
 }
 
@@ -17,17 +17,18 @@ layouts = {
   work = {
     { name = 'Safari',            app = 'Safari.app',             unit = units.maximum,       screen = 'DELL P2715Q' },
     { name = 'Terminal',          app = 'Terminal.app',           unit = units.bottom,        screen = 'DELL P2715Q' },
-    { name = 'Messages',          app = 'Messages.app',           unit = units.left,          screen = 'Color LCD'   },
     { name = 'Reminders',         app = 'Reminders.app',          unit = units.topleft,       screen = 'Color LCD'   },
     { name = 'Calendar',          app = 'Calendar.app',           unit = units.bottomright70, screen = 'Color LCD'   },
     { name = 'Mail',              app = 'Mail.app',               unit = units.maximum,       screen = 'Color LCD'   },
-    { name = 'Notes',             app = 'Notes.app',              unit = units.left,          screen = 'Color LCD'   },
-    { name = 'Slack',             app = 'Slack.app',              unit = units.right,         screen = 'Color LCD'   }
+    { name = 'Notes',             app = 'Notes.app',              unit = units.right,         screen = 'Color LCD'   },
+    { name = 'Slack',             app = 'Slack.app',              unit = units.left,          screen = 'Color LCD'   },
+    { name = 'Messages',          app = 'Messages.app',           unit = units.right,         screen = 'Color LCD'   },
+    { name = 'IntelliJ IDEA',     app = 'IntelliJ IDEA CE.app',   unit = units.maximum,       screen = 'DELL P2715Q' }
   }
 }
 
 -- Takes a layout definition (e.g. 'layouts.work') and iterates through
--- each application definition, laying it out as speccified
+-- each application definition, laying it out as specified
 function runLayout(layout)
   for i = 1,#layout do
     local t = layout[i]

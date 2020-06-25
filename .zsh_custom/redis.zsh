@@ -6,7 +6,7 @@ function mtier() {
 }
 
 function start-redisearch {
-    redis-server /usr/local/redis/redis.conf --loadmodule /Users/jruaux/git/RediSearch/build/redisearch.so
+    redis-server --save "" --appendonly no --loadmodule /Users/jruaux/git/RediSearch/build/redisearch.so
 }
 
 #function start-redisgraph {
