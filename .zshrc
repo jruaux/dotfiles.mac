@@ -1,5 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/Users/jruaux/Library/Python/2.7/bin:$PATH
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/jruaux/.oh-my-zsh"
@@ -28,7 +36,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -98,4 +106,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#fpath=(/usr/local/share/zsh-completions $fpath)

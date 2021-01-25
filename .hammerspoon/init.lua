@@ -22,8 +22,8 @@ layouts = {
     { name = 'Mail',              app = 'Mail.app',               unit = units.maximum,       screen = 'Color LCD'   },
     { name = 'Notes',             app = 'Notes.app',              unit = units.right,         screen = 'Color LCD'   },
     { name = 'Slack',             app = 'Slack.app',              unit = units.left,          screen = 'Color LCD'   },
-    { name = 'Messages',          app = 'Messages.app',           unit = units.right,         screen = 'Color LCD'   },
-    { name = 'IntelliJ IDEA',     app = 'IntelliJ IDEA CE.app',   unit = units.maximum,       screen = 'DELL P2715Q' }
+    { name = 'Messages',          app = 'Messages.app',           unit = units.right,         screen = 'Color LCD'   }
+--    { name = 'IntelliJ IDEA',     app = 'IntelliJ IDEA CE.app',   unit = units.maximum,       screen = 'DELL P2715Q' }
   }
 }
 
@@ -64,6 +64,7 @@ function moveToNextScreen()
   focusedWindow:setFrame(windowFrame)
 end
 
+cmd = { 'cmd' }
 mash = {'ctrl', 'alt', 'cmd' }
 hs.hotkey.bind(mash, 'right', function() hs.window.focusedWindow():move(units.right, nil, true) end)
 hs.hotkey.bind(mash, 'left',  function() hs.window.focusedWindow():move(units.left, nil, true) end)
@@ -76,3 +77,4 @@ hs.hotkey.bind(mash, "4",     function() hs.window.focusedWindow():move(units.bo
 hs.hotkey.bind(mash, 'm',     function() hs.window.focusedWindow():move(units.maximum, nil, true) end)
 hs.hotkey.bind(mash, 'n',     moveToNextScreen)
 hs.hotkey.bind(mash, '0',     function() runLayout(layouts.work) end)
+hs.hotkey.bind(cmd , 'm',     function() hs.window.focusedWindow():move(units.maximum, nil, true) end)
