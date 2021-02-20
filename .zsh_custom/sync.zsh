@@ -8,7 +8,7 @@ function sync-pics {
 }
 
 function sync-music {
-    sync ~/Music/Soulseek/complete/ nas:/tank/music/new/
+    sync ~/Music/Soulseek/complete/ nas:/tank/downloads/music/new/
 }
 
 function sync-jdownloader {
