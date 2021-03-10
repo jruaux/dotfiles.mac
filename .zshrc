@@ -110,3 +110,6 @@ source $ZSH/oh-my-zsh.sh
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/jruaux/.sdkman"
 [[ -s "/Users/jruaux/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/jruaux/.sdkman/bin/sdkman-init.sh"
+
+export CONFLUENT_HOME=/Users/jruaux/dev/confluent-6.1.0
+export PATH=$PATH:$CONFLUENT_HOME/bin

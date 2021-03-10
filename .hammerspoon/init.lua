@@ -3,8 +3,8 @@ hs.window.animationDuration = 0
 units = {
   right         = { x = 0.50, y = 0.00, w = 0.50, h = 1.00 },
   left          = { x = 0.00, y = 0.00, w = 0.50, h = 1.00 },
-  top           = { x = 0.00, y = 0.00, w = 1.00, h = 0.67 },
-  bottom        = { x = 0.00, y = 0.67, w = 1.00, h = 0.33 },
+  top           = { x = 0.00, y = 0.00, w = 1.00, h = 0.66 },
+  bottom        = { x = 0.00, y = 0.67, w = 1.00, h = 0.34 },
   topleft       = { x = 0.00, y = 0.00, w = 0.50, h = 0.67 },
   topright      = { x = 0.50, y = 0.00, w = 0.50, h = 0.67 },
   bottomleft    = { x = 0.00, y = 0.67, w = 0.50, h = 0.33 },
@@ -17,12 +17,12 @@ layouts = {
   work = {
     { name = 'Safari',            app = 'Safari.app',             unit = units.maximum,       screen = 'DELL P2715Q' },
     { name = 'Terminal',          app = 'Terminal.app',           unit = units.bottom,        screen = 'DELL P2715Q' },
-    { name = 'Reminders',         app = 'Reminders.app',          unit = units.topleft,       screen = 'Color LCD'   },
-    { name = 'Calendar',          app = 'Calendar.app',           unit = units.bottomright70, screen = 'Color LCD'   },
-    { name = 'Mail',              app = 'Mail.app',               unit = units.maximum,       screen = 'Color LCD'   },
-    { name = 'Notes',             app = 'Notes.app',              unit = units.right,         screen = 'Color LCD'   },
-    { name = 'Slack',             app = 'Slack.app',              unit = units.left,          screen = 'Color LCD'   },
-    { name = 'Messages',          app = 'Messages.app',           unit = units.right,         screen = 'Color LCD'   }
+    { name = 'Reminders',         app = 'Reminders.app',          unit = units.topleft,       screen = 'Retina Display' },
+    { name = 'Calendar',          app = 'Calendar.app',           unit = units.bottomright70, screen = 'Retina Display' },
+    { name = 'Mail',              app = 'Mail.app',               unit = units.maximum,       screen = 'Retina Display' },
+    { name = 'Notes',             app = 'Notes.app',              unit = units.right,         screen = 'Retina Display' },
+    { name = 'Slack',             app = 'Slack.app',              unit = units.left,          screen = 'Retina Display' },
+    { name = 'Messages',          app = 'Messages.app',           unit = units.right,         screen = 'Retina Display' }
 --    { name = 'IntelliJ IDEA',     app = 'IntelliJ IDEA CE.app',   unit = units.maximum,       screen = 'DELL P2715Q' }
   }
 }
@@ -30,19 +30,28 @@ layouts = {
 -- Takes a layout definition (e.g. 'layouts.work') and iterates through
 -- each application definition, laying it out as specified
 function runLayout(layout)
+  -- local screens = hs.screen.allScreens();
+  -- for i = 1,#screens do
+  --   local s = screens[i]
+  --   hs.alert.show("Screen " .. s:id() .. ": " .. s:name())
+  -- end
   for i = 1,#layout do
     local t = layout[i]
     local theapp = hs.application.get(t.name)
-    if win == nil then
-      hs.application.open(t.app)
-      theapp = hs.application.get(t.name)
+    if theapp == nil then
+       theapp = hs.application.open(t.app)
     end
     local win = theapp:mainWindow()
-    local screen = nil
-    if t.screen ~= nil then
-      screen = hs.screen.find(t.screen)
+    if win == nil then
+      hs.alert.show("No window for " .. t.name)
+    else
+      local screen = hs.screen.find(t.screen)
+      if screen == nil then
+        hs.alert.show("No screen " .. t.screen .. " for " .. t.name)
+      else
+        win:move(t.unit, screen, true)
+      end
     end
-    win:move(t.unit, screen, true)
   end
 end
 
