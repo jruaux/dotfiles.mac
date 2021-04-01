@@ -16,13 +16,14 @@ units = {
 layouts = {
   work = {
     { name = 'Safari',            app = 'Safari.app',             unit = units.maximum,       screen = 'DELL P2715Q' },
-    { name = 'Terminal',          app = 'Terminal.app',           unit = units.bottom,        screen = 'DELL P2715Q' },
+    { name = 'iTerm2',            app = 'iTerm.app',              unit = units.bottom,        screen = 'DELL P2715Q' },
     { name = 'Reminders',         app = 'Reminders.app',          unit = units.topleft,       screen = 'Retina Display' },
     { name = 'Calendar',          app = 'Calendar.app',           unit = units.bottomright70, screen = 'Retina Display' },
     { name = 'Mail',              app = 'Mail.app',               unit = units.maximum,       screen = 'Retina Display' },
     { name = 'Notes',             app = 'Notes.app',              unit = units.right,         screen = 'Retina Display' },
     { name = 'Slack',             app = 'Slack.app',              unit = units.left,          screen = 'Retina Display' },
-    { name = 'Messages',          app = 'Messages.app',           unit = units.right,         screen = 'Retina Display' }
+    { name = 'Messages',          app = 'Messages.app',           unit = units.right,         screen = 'Retina Display' },
+    { name = 'VNC Viewer',          app = 'VNC Viewer.app',       unit = units.maximum,       screen = 'Retina Display' }
 --    { name = 'IntelliJ IDEA',     app = 'IntelliJ IDEA CE.app',   unit = units.maximum,       screen = 'DELL P2715Q' }
   }
 }
